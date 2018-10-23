@@ -1,0 +1,26 @@
+ext.remoteRep = 'http://nexus:5800/nexus/content/groups/public/'
+
+ext.versions = [
+        'kotlinVersion'             : '1.0.6',
+        'springBoot'                : '',
+        'springIoPlatform'          : '',
+        'dependencyManagementPlugin': '0.6.0.RELEASE'
+]
+
+ext.projectInfo = [
+        'group'              : 'zjtech',
+        'version'            : '1.0',
+        'sourceCompatibility': '1.8',
+        'targetCompatibility': '1.8'
+]
+
+ext.customPlugins = [
+        'dependencyManagementPlugin': 'io.spring.gradle:dependency-management-plugin:${versions.dependencyManagementPlugin}'
+]
+
+ext.libs = [
+        'kotlinPlugin': "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlinVersion}",//kotlin plugin
+        'kotlinLib'   : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlinVersion}", //kotlin lib
+
+
+]

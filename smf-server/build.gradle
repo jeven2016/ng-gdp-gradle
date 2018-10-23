@@ -1,0 +1,39 @@
+apply from: 'config.gradle'
+
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-spring'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'eclipse'
+apply plugin: 'ide'
+
+/**
+ * The settings that gradle itself used in executing these gradle script files
+ */
+buildscript {
+    repositories {
+        mavenLocal() //first try to retrieve jars from local maven repository
+        maven {
+            //then try to retrieve from nexus since no jars could be found in local maven repository.
+            url '${remoteRep}'
+        }
+    }
+    dependencies {
+        classpath customPlugins.dependencyManagementPlugin
+        classpath("org.springframework.boot:spring-boot-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlinVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${versions.kotlinVersion}")
+    }
+}
+
+
+jar {
+    baseName = 'smf-server'
+    version = '1.0'
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile("org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlinVersion}")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}

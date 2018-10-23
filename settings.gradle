@@ -1,0 +1,3 @@
+rootProject.name = 'ng-gdp-gradle'
+
+include 'smf-server'
